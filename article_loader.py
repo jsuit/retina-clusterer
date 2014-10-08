@@ -24,6 +24,6 @@ def get_articles():
 
     return articles
 
-articles = get_articles();
-print(articles[10][0]['text']);
-raw_input('Press enter to exit...')
+#articles = get_articles();
+#print(articles[10][0]['text']);
+#raw_input('Press enter to exit...')
