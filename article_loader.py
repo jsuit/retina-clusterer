@@ -5,13 +5,18 @@ from StringIO import StringIO
 loads the text files that have been crawled.
 """
 
-LABELS_PATH = 'data/labeled/labels.txt'
 
-def get_articles():
+def get_articles(which=1):
     """
+    Which tells it whether you want to load full file or smaller label file
     :param dir_path: the directory that contains the articles
     :return: a list of 2-tuples of labeled training data: (article_json, label)
     """
+    if(which == 1):
+        LABELS_PATH = 'data/labeled/labels.txt'
+    else:
+        LABELS_PATH = 'data/labeled/labels_small.txt'
+
     articles = []
     with open(LABELS_PATH, 'r') as f:
         lines = f.readlines()
@@ -24,6 +29,18 @@ def get_articles():
 
     return articles
 
+
 #articles = get_articles();
 #print(articles[10][0]['text']);
 #raw_input('Press enter to exit...')
+
+def get_test_data():
+    """
+    :return: a list of article text
+    """
+    articles = []
+    for filename in os.listdir('data/test'):
+        with open('data/test/'+filename, 'r') as f:
+            articles.append([filename, f.read()]);
+    return articles
+
